@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: postgres-hospital
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - ./docker/init-dbs.sql:/docker-entrypoint-initdb.d/init-dbs.sql
+      - postgres_data:/var/lib/postgresql/data
+
+  ms-auth:
+    build:
+      context: ../Ms-Auth
+    container_name: ms-auth
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/msauth_db
+      DB_USER: postgres
+      DB_PASS: password
+      JWT_SECRET: dGhpcy1pcy1hLXZlcnktc2VjcmV0LWtleS1mb3ItaG9zcGl0YWwtbXMtYXV0aA==
+      JWT_EXPIRATION: 86400000
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  ms-user:
+    build:
+      context: .
+    container_name: ms-user
+    ports:
+      - "8081:8081"
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/msuser_db
+      DB_USER: postgres
+      DB_PASS: password
+      MS_AUTH_URL: http://ms-auth:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+      ms-auth:
+        condition: service_started
+
+volumes:
+  postgres_data:

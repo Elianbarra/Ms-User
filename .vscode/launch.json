@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot - MsUserApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.hospital.msuser.MsUserApplication",
+            "projectName": "ms-user",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "javaHome": "/opt/homebrew/Cellar/openjdk@21/21.0.10/libexec/openjdk.jdk/Contents/Home"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MsUserApplication<Ms-User>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.hospital.msuser.MsUserApplication",
+            "projectName": "Ms-User",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: ms-user
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/msuser_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:password}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 1
+
+  cloud:
+    openfeign:
+      client:
+        config:
+          ms-auth:
+            url: ${MS_AUTH_URL:http://localhost:8080}
+            connect-timeout: 5000
+            read-timeout: 5000
+
+server:
+  port: 8081

@@ -1,0 +1,2 @@
+CREATE DATABASE msuser_db;
+CREATE DATABASE msauth_db;

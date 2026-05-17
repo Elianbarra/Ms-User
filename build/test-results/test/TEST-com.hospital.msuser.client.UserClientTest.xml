@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.hospital.msuser.client.UserClientTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-05-16T05:13:42" hostname="MacBook-Air-de-Elian.local" time="0.188">
+  <properties/>
+  <testcase name="getAllActiveUsers_returnsMappedList()" classname="com.hospital.msuser.client.UserClientTest" time="0.162"/>
+  <testcase name="deactivateUser_notFound_throwsUserNotFoundException()" classname="com.hospital.msuser.client.UserClientTest" time="0.004"/>
+  <testcase name="updateUser_updatesOnlyProvidedFields()" classname="com.hospital.msuser.client.UserClientTest" time="0.006"/>
+  <testcase name="getAllActiveUsers_emptyRepo_returnsEmptyList()" classname="com.hospital.msuser.client.UserClientTest" time="0.001"/>
+  <testcase name="registerUser_duplicateDocument_throwsUserAlreadyExistsException()" classname="com.hospital.msuser.client.UserClientTest" time="0.002"/>
+  <testcase name="deactivateUser_setsIsActiveFalse()" classname="com.hospital.msuser.client.UserClientTest" time="0.001"/>
+  <testcase name="getUserById_notFound_throwsUserNotFoundException()" classname="com.hospital.msuser.client.UserClientTest" time="0.001"/>
+  <testcase name="registerUser_duplicateEmail_throwsUserAlreadyExistsException()" classname="com.hospital.msuser.client.UserClientTest" time="0.001"/>
+  <testcase name="getUserById_found_returnsMappedResponse()" classname="com.hospital.msuser.client.UserClientTest" time="0.001"/>
+  <testcase name="updateUser_notFound_throwsUserNotFoundException()" classname="com.hospital.msuser.client.UserClientTest" time="0.002"/>
+  <testcase name="registerUser_happyPath_returnsResponse()" classname="com.hospital.msuser.client.UserClientTest" time="0.003"/>
+  <system-out><![CDATA[2026-05-16T01:13:43.162-04:00  INFO 49670 --- [    Test worker] com.hospital.msuser.client.UserClient    : Usuario desactivado: f5b0f8bb-e1ac-48a2-a732-36c4595f086f
+2026-05-16T01:13:43.170-04:00  INFO 49670 --- [    Test worker] com.hospital.msuser.client.UserClient    : Usuario creado con id: 522c3ebf-b31d-4d4b-81d0-eeb5cce1da68
+2026-05-16T01:13:43.171-04:00  INFO 49670 --- [    Test worker] com.hospital.msuser.client.UserClient    : Credenciales enviadas a MS-AUTH para: juan@hospital.com
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
